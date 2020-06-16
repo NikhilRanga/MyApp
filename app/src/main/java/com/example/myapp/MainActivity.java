@@ -52,9 +52,8 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            String accessTkn = response.getString("access_token");
-                            MainActivity2.text.setText(accessTkn);
-
+                            MainActivity2.accessTkn = response.getString("access_token");
+                            openActivity2();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -65,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast toast = Toast.makeText(getApplicationContext(),"Not a valid user",Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG);
                         toast.show();
                     }
                 });
@@ -74,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 queue.add(objectRequest);
-                openActivity2();
             }
         });
     }

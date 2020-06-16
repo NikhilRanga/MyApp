@@ -25,7 +25,7 @@ import java.util.Map;
 
 public class MainActivity2 extends AppCompatActivity {
     static TextView text;
-
+    static String accessTkn;
     private RequestQueue queue;
     JsonArrayRequest arrayRequest;
     JSONObject data;
@@ -62,7 +62,7 @@ public class MainActivity2 extends AppCompatActivity {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTE2OTAwMzUsIm5iZiI6MTU5MTY5MDAzNSwianRpIjoiNjBhZTRkY2UtOGI1Yy00NTMxLWEyOGMtMzU5ODkxYjY0M2I4IiwiaWRlbnRpdHkiOjIsImZyZXNoIjpmYWxzZSwidHlwZSI6ImFjY2VzcyJ9.MZx-St-BOGJma1uLPoib9AA0rQRD12aaiiVGxqzPsmo");
+                params.put("Authorization", "Bearer "+accessTkn);
                 return params;
             }
         };
