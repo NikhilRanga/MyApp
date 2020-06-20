@@ -7,6 +7,22 @@
     android:padding="100dp">
 
     <EditText
+        android:id="@+id/emailid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter EmailId"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/roleid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Enter RoleId"
+        android:padding="10dp" />
+
+    <EditText
         android:id="@+id/prefsubject"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -15,7 +31,7 @@
         android:padding="10dp" />
 
     <EditText
-        android:id="@+id/research_details"
+        android:id="@+id/researchdet"
         android:layout_width="wrap_content"
         android:layout_height="108dp"
         android:gravity="top"
