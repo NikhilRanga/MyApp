@@ -132,6 +132,7 @@ public class status extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Authorization", "Bearer "+accessTkn);
+                params.put(Key_Email, emailid);
                 return params;
             }
         };
