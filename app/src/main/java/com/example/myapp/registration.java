@@ -1,24 +1,20 @@
 package com.example.myapp;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkError;
 import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-
 import com.android.volley.Response;
 import com.android.volley.RetryPolicy;
 import com.android.volley.ServerError;
@@ -27,10 +23,8 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -118,8 +112,8 @@ public class registration extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    userRegister();
-               queue.add(objectRequest);
+                userRegister();
+                queue.add(objectRequest);
             }
         });
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -155,7 +149,7 @@ public class registration extends AppCompatActivity {
         previous_position1 = previousposition.getText().toString().trim();
         years_of_service1 = yearsofservice.getText().toString().trim();
         gender1 = ((RadioButton)findViewById(gender.getCheckedRadioButtonId()))
-                        .getText().toString();
+                .getText().toString();
         dob1 = dob.getText().toString().trim();
         current_address = currentaddress.getText().toString().trim();
         permanent_address1 = permanentaddress.getText().toString().trim();
@@ -212,10 +206,6 @@ public class registration extends AppCompatActivity {
 
 
     }
-
-
-
-
 }
 
 
