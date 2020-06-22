@@ -1,5 +1,6 @@
 package com.example.myapp;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -34,8 +35,9 @@ import java.util.Map;
 
 public class login extends AppCompatActivity {
     Button btn;
-    Button btn1;
+
     EditText email, password;
+    private TextView Tv;
     private RequestQueue queue;
     JsonObjectRequest objectRequest;
     private static final String Key_Email = "EmailId";
@@ -49,8 +51,11 @@ public class login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        getSupportActionBar().setTitle("Login");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         btn = (Button) findViewById(R.id.button);
-        btn1 = (Button) findViewById(R.id.button2);
+
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.pass);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -60,11 +65,14 @@ public class login extends AppCompatActivity {
                 queue.add(objectRequest);
             }
         });
-        btn1.setOnClickListener(new View.OnClickListener() {
+
+
+        Tv=(TextView)findViewById(R.id.textView10);
+        Tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1=new Intent(login.this,MainActivity.class);
-                startActivity(i1);
+                Intent i3=new Intent(login.this, registration.class);
+                startActivity(i3);
             }
         });
     }
@@ -101,7 +109,7 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast toast = Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Invalid Email or Password", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 });

@@ -13,14 +13,15 @@
         android:layout_height="46dp"
         android:fontFamily="sans-serif-medium"
         android:text="List of Roles"
-        android:textSize="20dp"
         android:textColor="#131111"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.168"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.356" />
+        app:layout_constraintVertical_bias="0.44" />
+
 
     <TextView
         android:id="@+id/textView2"
@@ -28,14 +29,14 @@
         android:layout_height="51dp"
         android:fontFamily="sans-serif-medium"
         android:text="Status of applications "
-        android:textSize="20dp"
         android:textColor="#131111"
+        android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.252"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView1"
-        app:layout_constraintVertical_bias="0.084" />
+        app:layout_constraintVertical_bias="0.138" />
 
     <TextView
         android:id="@+id/textView3"
@@ -48,10 +49,10 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671" />
-
+        app:layout_constraintVertical_bias="0.719" />
 
     <Button
         android:id="@+id/button"
@@ -67,4 +68,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.888"  />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="138dp"
+        android:layout_height="145dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.105"
+        app:srcCompat="@drawable/smartphone" />
 </androidx.constraintlayout.widget.ConstraintLayout>

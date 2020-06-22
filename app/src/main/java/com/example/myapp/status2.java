@@ -12,12 +12,14 @@ import java.util.List;
 
 public class status2 extends AppCompatActivity {
     private Button button1;
-    private Button button2;
+
     static String accessTkn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.status2);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Application Status");
         button1=(Button)findViewById(R.id.button1);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -25,13 +27,6 @@ public class status2 extends AppCompatActivity {
                 //....
             }
         });
-        button2=(Button)findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i2=new Intent(status2.this,status.class);
-                startActivity(i2);
-            }
-        });
+
     }
 }

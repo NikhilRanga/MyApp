@@ -34,7 +34,7 @@ import java.util.Map;
 
 public class status extends AppCompatActivity {
 
-    Button btn2;
+
     Button btn1;
     Button btn3;
     EditText email;
@@ -54,8 +54,10 @@ public class status extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.status);
+        getSupportActionBar().setTitle("Application Status");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         btn1 = (Button) findViewById(R.id.button1);
-        btn2 = (Button) findViewById(R.id.button2);
+
         btn3 = (Button) findViewById(R.id.button3);
         email = (EditText) findViewById(R.id.email);
         recyclerView=(RecyclerView)findViewById(R.id.rv);
@@ -69,13 +71,7 @@ public class status extends AppCompatActivity {
                 queue.add(objectRequest);
             }
         });
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i1=new Intent(status.this,homepage.class);
-                startActivity(i1);
-            }
-        });
+
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

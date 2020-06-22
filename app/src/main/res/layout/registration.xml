@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg5">
+    android:background="@drawable/bg4">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -336,22 +336,23 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
                 android:layout_marginTop="29dp"
-                android:text="Register" />
+                android:background="@drawable/bluebuttons"
+                android:text="Register"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#fff"
+                android:textSize="15dp" />
 
             <Button
                 android:id="@+id/buttonLogin"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="150dp"
-                android:text="Login Now" />
-
-            <Button
-                android:id="@+id/back"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="150dp"
-                android:layout_marginBottom="29dp"
-                android:text="Back" />
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bluebuttons"
+                android:text="Login Now"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:textColor="#fff"
+                android:textSize="15dp" />
 
 
         </LinearLayout>

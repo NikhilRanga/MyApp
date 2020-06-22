@@ -35,7 +35,7 @@ import java.util.Map;
 
 public class details extends AppCompatActivity {
     private Button button1;
-    private Button button2;
+
     static String accessTkn;
     EditText roleid, prefsub, email, research;
     private RequestQueue queue;
@@ -54,6 +54,8 @@ public class details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.details);
+        getSupportActionBar().setTitle("Details");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         button1=(Button)findViewById(R.id.button1);
         roleid= (EditText) findViewById(R.id.roleid);
         email= (EditText) findViewById(R.id.emailid);
@@ -68,14 +70,7 @@ public class details extends AppCompatActivity {
 
             }
         });
-        button2=(Button)findViewById(R.id.button2);
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i1=new Intent(details.this,rolelist.class);
-                startActivity(i1);
-            }
-        });
+
     }
     public void userDetails()  {
         role_id= roleid.getText().toString().trim();
@@ -113,7 +108,7 @@ public class details extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast toast = Toast.makeText(getApplicationContext(),"You cannot apply more than thrice", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Invalid input", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }){

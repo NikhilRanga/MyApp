@@ -36,7 +36,7 @@ import java.util.Map;
 public class registration extends AppCompatActivity {
     private Button registerButton;
     private Button loginButton;
-    private Button backButton;
+
     RadioGroup gender;
     EditText firstname, lastname, email, password, aadhar, phone, college, deptqualified, qualification, cgpa, achievements, collegebatch, previousoffice, previousposition, yearsofservice,  dob, currentaddress, permanentaddress;
     private RequestQueue queue;
@@ -86,6 +86,8 @@ public class registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.registration);
+        getSupportActionBar().setTitle("Registration");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         firstname = (EditText) findViewById(R.id.firstName);
         lastname = (EditText) findViewById(R.id.lastName);
@@ -108,7 +110,7 @@ public class registration extends AppCompatActivity {
         permanentaddress = (EditText) findViewById(R.id.permanentAddress);
         registerButton = (Button) findViewById(R.id.buttonRegister);
         loginButton = (Button) findViewById(R.id.buttonLogin);
-        backButton = (Button) findViewById(R.id.back);
+
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,13 +126,7 @@ public class registration extends AppCompatActivity {
 
             }
         });
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i2=new Intent(registration.this,MainActivity.class);
-                startActivity(i2);
-            }
-        });
+
     }
     public void userRegister()  {
         first_name = firstname.getText().toString().trim();

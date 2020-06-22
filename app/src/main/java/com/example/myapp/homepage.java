@@ -16,6 +16,7 @@ public class homepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.homepage);
+        getSupportActionBar().setTitle("Homepage");
 
         button1 = (Button) findViewById(R.id.button);
         button1.setOnClickListener(new View.OnClickListener() {

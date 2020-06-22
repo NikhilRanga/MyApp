@@ -33,7 +33,7 @@ public class rolelist extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private List<carditem> cardItems;
     private Button applyButton;
-    private Button backButton;
+
     private RequestQueue queue;
     private static final String URL="https://admintesting.herokuapp.com/seevacantroles";
    // private static final String URL="https://user-test-api.herokuapp.com/seevacantroles";
@@ -42,12 +42,14 @@ public class rolelist extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.rolelist);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("List of Roles");
         recyclerView=(RecyclerView)findViewById(R.id.rv);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         cardItems=new ArrayList<>();
         applyButton = (Button) findViewById(R.id.button1);
-        backButton = (Button) findViewById(R.id.button2);
+
         applyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,13 +59,7 @@ public class rolelist extends AppCompatActivity {
 
             }
         });
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i2=new Intent(rolelist.this,homepage.class);
-                startActivity(i2);
-            }
-        });
+
         StringRequest stringRequest= new StringRequest(Request.Method.GET,
                 URL,
                 new Response.Listener<String>() {

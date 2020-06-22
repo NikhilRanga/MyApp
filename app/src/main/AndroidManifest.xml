@@ -17,13 +17,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login"/>
-        <activity android:name=".status"/>
-        <activity android:name=".status2"/>
-        <activity android:name=".details"/>
-        <activity android:name=".registration"/>
-        <activity android:name=".rolelist"/>
-        <activity android:name=".homepage"/>
+        <activity android:name=".login"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".status"
+            android:parentActivityName=".homepage"/>
+        <activity android:name=".status2"
+            android:parentActivityName=".status"/>
+        <activity android:name=".details"
+            android:parentActivityName=".rolelist"/>
+        <activity android:name=".registration"
+            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".rolelist"
+            android:parentActivityName=".homepage"/>
+        <activity android:name=".homepage"
+            />
     </application>
 
 </manifest>
