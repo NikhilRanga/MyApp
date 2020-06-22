@@ -44,7 +44,6 @@ public class details extends AppCompatActivity {
     static final String Key_prefsub = "preferred_subj";
     static final String Key_email = "EmailId";
     static final String Key_research = "Research_details";
-
     private String role_id;
     private String email_id;
     private String pref_sub;
@@ -83,6 +82,7 @@ public class details extends AppCompatActivity {
         email_id= email.getText().toString().trim();
         pref_sub= prefsub.getText().toString().trim();
         research_details= research.getText().toString().trim();
+
         String URL = "https://admintesting.herokuapp.com/appdetails";
         data = new JSONObject();
         try {
@@ -113,7 +113,7 @@ public class details extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast toast = Toast.makeText(getApplicationContext(),"you cannot apply more than thrice", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(),"You cannot apply more than thrice", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }){
