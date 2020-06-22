@@ -1,25 +1,35 @@
 package com.example.myapp;
-
+import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,7 +50,6 @@ public class details extends AppCompatActivity {
     private String pref_sub;
     private String research_details;
     JSONObject data;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,18 +73,16 @@ public class details extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               Intent i1=new Intent(details.this,rolelist.class);
-               startActivity(i1);
+                Intent i1=new Intent(details.this,rolelist.class);
+                startActivity(i1);
             }
         });
     }
-    public void userDetails()
-    {
+    public void userDetails()  {
         role_id= roleid.getText().toString().trim();
         email_id= email.getText().toString().trim();
         pref_sub= prefsub.getText().toString().trim();
         research_details= research.getText().toString().trim();
-
         String URL = "https://admintesting.herokuapp.com/appdetails";
         data = new JSONObject();
         try {
@@ -106,7 +113,7 @@ public class details extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast toast = Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(),"you cannot apply more than thrice", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }){
@@ -120,8 +127,10 @@ public class details extends AppCompatActivity {
 
 
     }
-
 }
+
+
+
 
 
 

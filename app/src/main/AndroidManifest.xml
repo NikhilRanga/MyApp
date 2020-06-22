@@ -10,7 +10,6 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity2"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +19,7 @@
         </activity>
         <activity android:name=".login"/>
         <activity android:name=".status"/>
+        <activity android:name=".status2"/>
         <activity android:name=".details"/>
         <activity android:name=".registration"/>
         <activity android:name=".rolelist"/>

@@ -36,6 +36,7 @@ public class rolelist extends AppCompatActivity {
     private Button backButton;
     private RequestQueue queue;
     private static final String URL="https://admintesting.herokuapp.com/seevacantroles";
+   // private static final String URL="https://user-test-api.herokuapp.com/seevacantroles";
     static String accessTkn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,30 +109,6 @@ public class rolelist extends AppCompatActivity {
         queue.add(stringRequest);
 
 
-
-
-       /* b1 = (Button) findViewById(R.id.btn1);
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Code for uploading datd to the db
-
-                Intent i1 = new Intent(rolelist.this, details.class);
-                startActivity(i1);
-            }
-        });
-
-        b2 = (Button) findViewById(R.id.button3);
-        b2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Code for uploading datd to the db
-
-                Intent i2 = new Intent(rolelist.this, homepage.class);
-                startActivity(i2);
-            }
-        });
-*/
     }
 
 }
