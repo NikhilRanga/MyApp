@@ -98,6 +98,7 @@ public class login extends AppCompatActivity {
                     public void onResponse(JSONObject response) {
                         try {
                             homepage.accessTkn = response.getString("access_token");
+                            homepage.eid=emailid;
                             opennext();
                         } catch (JSONException e) {
                             e.printStackTrace();

@@ -12,6 +12,7 @@ public class homepage extends AppCompatActivity {
     private TextView tev1;
     private TextView tev2;
     static String accessTkn;
+    static String eid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +32,7 @@ public class homepage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rolelist.accessTkn =accessTkn;
+                rolelist.eid=eid;
                 Intent i2 = new Intent(homepage.this,rolelist.class);
                 startActivity(i2);
 
@@ -41,6 +43,7 @@ public class homepage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 status.accessTkn =accessTkn;
+                status.eid=eid;
                 Intent i3 = new Intent(homepage.this,status.class);
                 startActivity(i3);
             }

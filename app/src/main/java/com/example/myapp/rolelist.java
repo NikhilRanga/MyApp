@@ -38,6 +38,7 @@ public class rolelist extends AppCompatActivity {
     private static final String URL="https://admintesting.herokuapp.com/seevacantroles";
    // private static final String URL="https://user-test-api.herokuapp.com/seevacantroles";
     static String accessTkn;
+    static String eid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,7 @@ public class rolelist extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 details.accessTkn =accessTkn;
+                details.eid=eid;
                 Intent i1=new Intent(rolelist.this,details.class);
                 startActivity(i1);
 

@@ -36,7 +36,7 @@ import java.util.Map;
 public class registration extends AppCompatActivity {
     private Button registerButton;
     private Button loginButton;
-
+    public static String eid;
     RadioGroup gender;
     EditText firstname, lastname, email, password, aadhar, phone, college, deptqualified, qualification, cgpa, achievements, collegebatch, previousoffice, previousposition, yearsofservice,  dob, currentaddress, permanentaddress;
     private RequestQueue queue;
@@ -132,6 +132,7 @@ public class registration extends AppCompatActivity {
         first_name = firstname.getText().toString().trim();
         last_name = lastname.getText().toString().trim();
         emailid = email.getText().toString().trim();
+        eid=emailid;
         passw1 = password.getText().toString().trim();
         aadhar_passport_no = aadhar.getText().toString().trim();
         phone_no = phone.getText().toString().trim();
