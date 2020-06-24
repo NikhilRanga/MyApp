@@ -109,7 +109,7 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast toast = Toast.makeText(getApplicationContext(), "Invalid Email or Password", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG);
                         toast.show();
                     }
                 });

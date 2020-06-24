@@ -69,7 +69,6 @@
         android:layout_height="50dp"
         android:background="@drawable/bluebuttons"
         android:text="Submit"
-
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="#ffff"
         android:textSize="15dp"

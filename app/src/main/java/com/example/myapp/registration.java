@@ -194,8 +194,7 @@ public class registration extends AppCompatActivity {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
-                        Toast toast = Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(),error.toString(), Toast.LENGTH_LONG);
                         toast.show();
                     }
                 });
