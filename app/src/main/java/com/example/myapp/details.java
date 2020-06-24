@@ -22,17 +22,20 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class details extends AppCompatActivity {
     private Button button1;
 
     static String accessTkn;
-    EditText roleid, prefsub, email, research;
+    EditText roleid, prefsub, research;
+    private RequestQueue queue;
+    JsonObjectRequest objectRequest;
     static final String Key_roleid = "Roll_id";
     static final String Key_prefsub = "preferred_subj";
     static final String Key_email = "EmailId";
     static final String Key_research = "Research_details";
     private String role_id;
-    private String email_id;
+    static String eid;
     private String pref_sub;
     private String research_details;
 
@@ -45,7 +48,7 @@ public class details extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         button1=(Button)findViewById(R.id.button1);
         roleid= (EditText) findViewById(R.id.roleid);
-        email= (EditText) findViewById(R.id.emailid);
+
         prefsub= (EditText) findViewById(R.id.prefsubject);
         research= (EditText) findViewById(R.id.researchdet);
 
@@ -59,13 +62,25 @@ public class details extends AppCompatActivity {
     }
     public void userDetails()  {
         role_id= roleid.getText().toString().trim();
-        email_id= email.getText().toString().trim();
+
         pref_sub= prefsub.getText().toString().trim();
         research_details= research.getText().toString().trim();
 
         String URL = "https://admintesting.herokuapp.com/appdetails";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL,
-                new Response.Listener<String>() {
+        data = new JSONObject();
+        try {
+            data.put(Key_roleid,role_id);
+            data.put(Key_email,eid);
+            data.put(Key_prefsub,pref_sub);
+            data.put(Key_research,research_details);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        queue = Volley.newRequestQueue(this);
+        objectRequest = new JsonObjectRequest(Request.Method.POST,
+                URL,
+                data,
+                new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(String response) {
                         Toast toast = Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG);
@@ -89,20 +104,11 @@ public class details extends AppCompatActivity {
                 return params;
             }
 
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put(Key_roleid,role_id);
-                params.put(Key_email,email_id);
-                params.put(Key_prefsub,pref_sub);
-                params.put(Key_research,research_details);
-                return params;
-            }
-        };
-       stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+        objectRequest.setRetryPolicy(new DefaultRetryPolicy(
                 0,
                 DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);

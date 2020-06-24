@@ -33,10 +33,10 @@ public class status extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<carditem2> cardItems;
-    private static final String URL = "https://admintesting.herokuapp.com/mydetails";
+    private static final String URL="https://admintesting.herokuapp.com/seestatus";
     static String accessTkn;
     private static final String Key_Email = "EmailId";
-    private String emailid;
+    static String eid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,12 +70,17 @@ public class status extends AppCompatActivity {
 
     }
     public void userIds() {
-       emailid = email.getText().toString().trim();
-        Toast toast = Toast.makeText(getApplicationContext(),emailid , Toast.LENGTH_LONG);
-        toast.show();
-      StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                URL,
-                new Response.Listener<String>() {
+        data = new JSONObject();
+        try {
+            data.put(Key_Email, eid);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        queue = Volley.newRequestQueue(this);
+        objectRequest = new JsonObjectRequest(Request.Method.GET,
+                URL,data,
+                new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(String s) {
                         try {
@@ -107,13 +112,8 @@ public class status extends AppCompatActivity {
                 Map<String, String> headers = new HashMap<String, String>();
                 headers.put("Authorization", "Bearer " + accessTkn);
                 return headers;
+
             }
-          @Override
-          public Map<String, String> getParams() throws AuthFailureError {
-              Map<String, String> params = new HashMap<String, String>();
-              params.put("EmailId","xcv@gmail.com");
-              return params;
-          }
         };
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(stringRequest );
