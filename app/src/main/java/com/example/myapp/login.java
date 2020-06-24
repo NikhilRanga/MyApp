@@ -97,9 +97,14 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
+
                             homepage.accessTkn = response.getString("access_token");
                             homepage.eid=emailid;
                             opennext();
+                         //   Toast toast = Toast.makeText(getApplicationContext(),response.getString("message") , Toast.LENGTH_LONG);
+                         //   toast.show();
+
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

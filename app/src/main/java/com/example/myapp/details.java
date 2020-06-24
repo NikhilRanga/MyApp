@@ -1,24 +1,35 @@
 package com.example.myapp;
 import androidx.appcompat.app.AppCompatActivity;
-
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import org.json.JSONException;
 import org.json.JSONObject;
-
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,7 +49,7 @@ public class details extends AppCompatActivity {
     static String eid;
     private String pref_sub;
     private String research_details;
-
+    JSONObject data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +67,8 @@ public class details extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userDetails();
+                queue.add(objectRequest);
+
             }
         });
 
@@ -82,9 +95,13 @@ public class details extends AppCompatActivity {
                 data,
                 new Response.Listener<JSONObject>() {
                     @Override
-                    public void onResponse(String response) {
-                        Toast toast = Toast.makeText(getApplicationContext(), response, Toast.LENGTH_LONG);
-                        toast.show();
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Toast toast = Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_LONG);
+                            toast.show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
 
                     }
                 },
@@ -92,17 +109,17 @@ public class details extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast toast = Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Invalid input", Toast.LENGTH_LONG);
                         toast.show();
                     }
-                })
-        {
+                }){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("Authorization", "Bearer "+accessTkn);
                 return params;
             }
+        };
 
         objectRequest.setRetryPolicy(new DefaultRetryPolicy(
                 0,
@@ -110,13 +127,8 @@ public class details extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
         ));
 
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
+
     }
 }
-
-
-
-
 
 
