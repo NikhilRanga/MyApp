@@ -9,11 +9,12 @@
 
     <EditText
         android:id="@+id/roleid"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="76dp"
         android:ems="10"
         android:hint="Enter RoleId"
+        android:textAlignment="center"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,10 +25,11 @@
 
     <EditText
         android:id="@+id/prefsubject"
-        android:layout_width="250dp"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="Enter Preference Subject"
+        android:textAlignment="center"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,8 +40,8 @@
 
     <EditText
         android:id="@+id/researchdet"
-        android:layout_width="wrap_content"
-        android:layout_height="108dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
         android:gravity="top"
         android:hint="Enter that Subject Research Details"
         android:inputType="text|textMultiLine"
