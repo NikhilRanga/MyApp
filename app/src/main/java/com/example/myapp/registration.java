@@ -34,6 +34,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static android.text.TextUtils.isEmpty;
+
 public class registration extends AppCompatActivity {
     private Button registerButton;
     private Button loginButton;
@@ -115,7 +117,33 @@ public class registration extends AppCompatActivity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                userRegister();
+                first_name = firstname.getText().toString().trim();
+                last_name = lastname.getText().toString().trim();
+                emailid = email.getText().toString().trim();
+                passw1 = password.getText().toString().trim();
+                aadhar_passport_no = aadhar.getText().toString().trim();
+                phone_no = phone.getText().toString().trim();
+                graduated_college = college.getText().toString().trim();
+                dept_qualified = deptqualified.getText().toString().trim();
+                qualification1 = qualification.getText().toString().trim();
+                cgpa1 = cgpa.getText().toString().trim();
+                achievements1 = achievements.getText().toString().trim();
+                college_batch = collegebatch.getText().toString().trim();
+                previous_office = previousoffice.getText().toString().trim();
+                previous_position1 = previousposition.getText().toString().trim();
+                years_of_service1 = yearsofservice.getText().toString().trim();
+                gender1 = ( (RadioButton) findViewById(gender.getCheckedRadioButtonId()) ).getText().toString();
+                dob1 = dob.getText().toString().trim();
+                current_address = currentaddress.getText().toString().trim();
+                permanent_address1 = permanentaddress.getText().toString().trim();
+             if(isEmpty(first_name)||isEmpty(last_name)||isEmpty(emailid)||isEmpty(passw1)||isEmpty(aadhar_passport_no)||isEmpty(phone_no)||isEmpty(graduated_college )||isEmpty( dept_qualified )||isEmpty(qualification1)||isEmpty(  cgpa1 )||isEmpty(achievements1)||isEmpty(college_batch)||isEmpty(previous_office)||isEmpty(previous_position1)||isEmpty( years_of_service1 )||isEmpty( gender1)||isEmpty(dob1)||isEmpty(current_address)||isEmpty(permanent_address1))
+             {
+                 Toast toast = Toast.makeText(getApplicationContext(),"Enter All Details", Toast.LENGTH_LONG);
+                 toast.show();
+             }
+             else
+                 userRegister();
+
             }
         });
         loginButton.setOnClickListener(new View.OnClickListener() {
@@ -130,27 +158,6 @@ public class registration extends AppCompatActivity {
     }
 
     public void userRegister() {
-        first_name = firstname.getText().toString().trim();
-        last_name = lastname.getText().toString().trim();
-        emailid = email.getText().toString().trim();
-        eid = emailid;
-        passw1 = password.getText().toString().trim();
-        aadhar_passport_no = aadhar.getText().toString().trim();
-        phone_no = phone.getText().toString().trim();
-        graduated_college = college.getText().toString().trim();
-        dept_qualified = deptqualified.getText().toString().trim();
-        qualification1 = qualification.getText().toString().trim();
-        cgpa1 = cgpa.getText().toString().trim();
-        achievements1 = achievements.getText().toString().trim();
-        college_batch = collegebatch.getText().toString().trim();
-        previous_office = previousoffice.getText().toString().trim();
-        previous_position1 = previousposition.getText().toString().trim();
-        years_of_service1 = yearsofservice.getText().toString().trim();
-        gender1 = ( (RadioButton) findViewById(gender.getCheckedRadioButtonId()) )
-                .getText().toString();
-        dob1 = dob.getText().toString().trim();
-        current_address = currentaddress.getText().toString().trim();
-        permanent_address1 = permanentaddress.getText().toString().trim();
             String URL = "https://admintesting.herokuapp.com/userreg";
             data = new JSONObject();
             try {

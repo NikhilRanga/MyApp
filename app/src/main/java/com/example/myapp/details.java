@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.text.TextUtils;
 import android.widget.Toast;
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
@@ -32,6 +33,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.text.TextUtils.isEmpty;
 
 
 public class details extends AppCompatActivity {
@@ -66,6 +69,15 @@ public class details extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                role_id= roleid.getText().toString().trim();
+                pref_sub= prefsub.getText().toString().trim();
+                research_details= research.getText().toString().trim();
+                if(isEmpty(role_id)||isEmpty(pref_sub)||isEmpty(research_details))
+                {
+                    Toast toast = Toast.makeText(getApplicationContext(),"Enter All Details", Toast.LENGTH_LONG);
+                    toast.show();
+                }
+                else
                 userDetails();
                 queue.add(objectRequest);
 
@@ -74,10 +86,6 @@ public class details extends AppCompatActivity {
 
     }
     public void userDetails()  {
-        role_id= roleid.getText().toString().trim();
-
-        pref_sub= prefsub.getText().toString().trim();
-        research_details= research.getText().toString().trim();
 
         String URL = "https://admintesting.herokuapp.com/appdetails";
         data = new JSONObject();
