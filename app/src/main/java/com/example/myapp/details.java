@@ -79,8 +79,6 @@ public class details extends AppCompatActivity {
                 }
                 else
                 userDetails();
-                queue.add(objectRequest);
-
             }
         });
 
@@ -117,7 +115,7 @@ public class details extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast toast = Toast.makeText(getApplicationContext(), "Invalid input", Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG);
                         toast.show();
                     }
                 }){
@@ -135,7 +133,7 @@ public class details extends AppCompatActivity {
                 DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
         ));
 
-
+        queue.add(objectRequest);
     }
 }
 
