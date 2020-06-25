@@ -97,14 +97,9 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-
-                            homepage.accessTkn = response.getString("access_token");
-                            homepage.eid=emailid;
-                            opennext();
-                         //   Toast toast = Toast.makeText(getApplicationContext(),response.getString("message") , Toast.LENGTH_LONG);
-                         //   toast.show();
-
-
+                                homepage.accessTkn = response.getString("access_token");
+                                homepage.eid = emailid;
+                                opennext();
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -115,7 +110,7 @@ public class login extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
 
-                        Toast toast = Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG);
+                        Toast toast = Toast.makeText(getApplicationContext(), "Invalid Credentials!", Toast.LENGTH_LONG);
                         toast.show();
                     }
                 });

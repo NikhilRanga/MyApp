@@ -33,10 +33,8 @@ public class rolelist extends AppCompatActivity {
     private RecyclerView.Adapter adapter;
     private List<carditem> cardItems;
     private Button applyButton;
-
     private RequestQueue queue;
     private static final String URL="https://admintesting.herokuapp.com/seevacantroles";
-   // private static final String URL="https://user-test-api.herokuapp.com/seevacantroles";
     static String accessTkn;
     static String eid;
     @Override

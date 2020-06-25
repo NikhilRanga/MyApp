@@ -13,6 +13,7 @@ public class homepage extends AppCompatActivity {
     private TextView tev2;
     static String accessTkn;
     static String eid;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

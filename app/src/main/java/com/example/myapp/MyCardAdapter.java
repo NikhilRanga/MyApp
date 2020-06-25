@@ -33,8 +33,8 @@ public  class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolde
         carditem item=carditems.get(position);
         holder.roleid.setText(item.getRoleid());
         holder.rolename.setText(item.getRole());
-        holder.prereq.setText(item.getPrereq());
-        holder.deptname.setText(item.getDeptname());
+       holder.prereq.setText(item.getPrereq());
+       holder.deptname.setText(item.getDeptname());
     }
 
     @Override
@@ -53,6 +53,7 @@ public  class MyCardAdapter extends RecyclerView.Adapter<MyCardAdapter.ViewHolde
             rolename=(TextView) itemView.findViewById(R.id.role);
             prereq=(TextView) itemView.findViewById(R.id.pr);
             deptname=(TextView) itemView.findViewById(R.id.dn);
+
         }
     }
 }

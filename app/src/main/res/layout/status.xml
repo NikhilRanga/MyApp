@@ -15,8 +15,8 @@
         android:padding="10dp"
         app:srcCompat="@drawable/hr" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv"
+   <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv1"
         android:layout_width="match_parent"
         android:layout_height="454dp" />
 

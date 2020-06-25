@@ -10,7 +10,7 @@ public class carditem2 {
     {
 
     }
-    public carditem2(String roleid,String appid,String deptname,String vacantpos,String status)
+    public carditem2(String appid,String deptname,String vacantpos,String roleid,String status)
     {
         this.roleid=roleid;
         this.appid=appid;
