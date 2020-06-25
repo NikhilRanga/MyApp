@@ -21,8 +21,6 @@
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".status"
             android:parentActivityName=".homepage"/>
-        <activity android:name=".status2"
-            android:parentActivityName=".status"/>
         <activity android:name=".details"
             android:parentActivityName=".rolelist"/>
         <activity android:name=".registration"

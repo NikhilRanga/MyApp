@@ -2,6 +2,7 @@ package com.example.myapp;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,7 +39,7 @@ public class registration extends AppCompatActivity {
     private Button loginButton;
     public static String eid;
     RadioGroup gender;
-    EditText firstname, lastname, email, password, aadhar, phone, college, deptqualified, qualification, cgpa, achievements, collegebatch, previousoffice, previousposition, yearsofservice,  dob, currentaddress, permanentaddress;
+    EditText firstname, lastname, email, password, aadhar, phone, college, deptqualified, qualification, cgpa, achievements, collegebatch, previousoffice, previousposition, yearsofservice, dob, currentaddress, permanentaddress;
     private RequestQueue queue;
     JsonObjectRequest objectRequest;
     static final String Key_firstname = "First_Name";
@@ -115,24 +116,24 @@ public class registration extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 userRegister();
-                queue.add(objectRequest);
             }
         });
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1=new Intent(registration.this,login.class);
+                Intent i1 = new Intent(registration.this, login.class);
                 startActivity(i1);
 
             }
         });
 
     }
-    public void userRegister()  {
+
+    public void userRegister() {
         first_name = firstname.getText().toString().trim();
         last_name = lastname.getText().toString().trim();
         emailid = email.getText().toString().trim();
-        eid=emailid;
+        eid = emailid;
         passw1 = password.getText().toString().trim();
         aadhar_passport_no = aadhar.getText().toString().trim();
         phone_no = phone.getText().toString().trim();
@@ -145,63 +146,69 @@ public class registration extends AppCompatActivity {
         previous_office = previousoffice.getText().toString().trim();
         previous_position1 = previousposition.getText().toString().trim();
         years_of_service1 = yearsofservice.getText().toString().trim();
-        gender1 = ((RadioButton)findViewById(gender.getCheckedRadioButtonId()))
+        gender1 = ( (RadioButton) findViewById(gender.getCheckedRadioButtonId()) )
                 .getText().toString();
         dob1 = dob.getText().toString().trim();
         current_address = currentaddress.getText().toString().trim();
         permanent_address1 = permanentaddress.getText().toString().trim();
+            String URL = "https://admintesting.herokuapp.com/userreg";
+            data = new JSONObject();
+            try {
+                data.put(Key_firstname, first_name);
+                data.put(Key_lastname, last_name);
+                data.put(Key_email, emailid);
+                data.put(Key_password, passw1);
+                data.put(Key_aadhar, aadhar_passport_no);
+                data.put(Key_phone, phone_no);
+                data.put(Key_college, graduated_college);
+                data.put(Key_deptqualified, dept_qualified);
+                data.put(Key_qualification, qualification1);
+                data.put(Key_cgpa, cgpa1);
+                data.put(Key_achievements, achievements1);
+                data.put(Key_collegebatch, college_batch);
+                data.put(Key_previousoffice, previous_office);
+                data.put(Key_previousposition, previous_position1);
+                data.put(Key_yearsofservice, years_of_service1);
+                data.put(Key_gender, gender1);
+                data.put(Key_dob, dob1);
+                data.put(Key_currentaddress, current_address);
+                data.put(Key_permanentaddress, permanent_address1);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            queue = Volley.newRequestQueue(this);
+            objectRequest = new JsonObjectRequest(Request.Method.POST,
+                    URL,
+                    data,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                Toast toast = Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_LONG);
+                                toast.show();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
 
-        String URL = "https://admintesting.herokuapp.com/userreg";
-        data = new JSONObject();
-        try {
-            data.put(Key_firstname, first_name);
-            data.put(Key_lastname, last_name);
-            data.put(Key_email, emailid);
-            data.put(Key_password, passw1);
-            data.put(Key_aadhar, aadhar_passport_no);
-            data.put(Key_phone, phone_no);
-            data.put(Key_college, graduated_college);
-            data.put(Key_deptqualified, dept_qualified);
-            data.put(Key_qualification, qualification1);
-            data.put(Key_cgpa, cgpa1);
-            data.put(Key_achievements, achievements1);
-            data.put(Key_collegebatch, college_batch);
-            data.put(Key_previousoffice, previous_office);
-            data.put(Key_previousposition, previous_position1);
-            data.put(Key_yearsofservice, years_of_service1);
-            data.put(Key_gender, gender1);
-            data.put(Key_dob, dob1);
-            data.put(Key_currentaddress, current_address);
-            data.put(Key_permanentaddress, permanent_address1);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        queue = Volley.newRequestQueue(this);
-        objectRequest = new JsonObjectRequest(Request.Method.POST,
-                URL,
-                data,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            Toast toast = Toast.makeText(getApplicationContext(), response.getString("message"), Toast.LENGTH_LONG);
-                            toast.show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
                         }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Toast toast = Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG);
+                            toast.show();
+                        }
+                    });
+            objectRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    0,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+            ));
 
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast toast = Toast.makeText(getApplicationContext(),error.toString(), Toast.LENGTH_LONG);
-                        toast.show();
-                    }
-                });
-
-
+            queue.add(objectRequest);
+        }
     }
-}
+
+
 
 
