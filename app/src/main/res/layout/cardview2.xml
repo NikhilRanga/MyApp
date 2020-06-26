@@ -106,7 +106,7 @@
                     android:id="@+id/status"
                     android:layout_width="231dp"
                     android:layout_height="match_parent"
-                    android:hint="status"
+                    android:hint="Not Updated"
                     android:textAppearance="@style/TextAppearance.AppCompat.Large" />
             </LinearLayout>
 
