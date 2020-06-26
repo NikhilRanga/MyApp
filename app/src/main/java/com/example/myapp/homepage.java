@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.*;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -85,7 +86,7 @@ public class homepage extends AppCompatActivity {
                     @Override
                     public void onResponse(String s) {
                         try {
-                            JSONArray array = new JSONArray(s);
+                            final JSONArray array = new JSONArray(s);
                             for(int i=0;i<array.length();i++)
                             {
                                 JSONObject j=array.getJSONObject(i);
@@ -95,9 +96,9 @@ public class homepage extends AppCompatActivity {
                             }
                             for(int k=0;k<array.length();k++)
                             {
-                                if(a[k] == b[k])
+                                if(a[k].equalsIgnoreCase(b[k])) {
                                     continue;
-                                else
+                                }else
                                 {
                                     prev_updation(array.length());
                                     builder.setMessage("Your status of one of the application has been changed")
