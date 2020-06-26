@@ -70,10 +70,10 @@ public class status extends AppCompatActivity {
                             {
                                 JSONObject j=array.getJSONObject(i);
                                 carditem2 item =new carditem2(
-                                      j.getString("Application_id"),
-                                       j.getString("Dept_name"),
-                                        j.getString("Position_vacant"),
-                                       j.getString("Roll_id"),
+                                      j.getString("Application_id1"),
+                                       j.getString("Dept_name1"),
+                                        j.getString("Position_vacant1"),
+                                       j.getString("Roll_id1"),
                                        j.getString("id_Status")
 
                                 );
