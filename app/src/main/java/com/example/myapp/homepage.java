@@ -1,10 +1,12 @@
 package com.example.myapp;
 
+import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Message;
@@ -58,7 +60,7 @@ public class homepage extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i1 = new Intent(homepage.this, MainActivity.class);
+                Intent i1 = new Intent(homepage.this,MainActivity.class);
                 startActivity(i1);
             }
         });
@@ -115,7 +117,8 @@ public class homepage extends AppCompatActivity {
                                     AlertDialog alert = builder.create();
                                     alert.setTitle("Updates");
                                     alert.show();
-                                break;
+                                    break;
+
                                 }
                             }
 
