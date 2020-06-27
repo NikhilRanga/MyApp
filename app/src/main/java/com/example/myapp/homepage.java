@@ -1,5 +1,8 @@
 package com.example.myapp;
 
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,6 +16,7 @@ import java.util.*;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -39,9 +43,9 @@ public class homepage extends AppCompatActivity {
     private String app_id;
     JSONObject data;
     static String eid;
-    String a[]=new String[3];
-    String b[]=new String[3];
-    String c[]=new String[3];
+    String a[]=new String[10];
+    String b[]=new String[10];
+    String c[]=new String[10];
     AlertDialog.Builder builder;
     private static final String URL="https://admintesting.herokuapp.com/seestatus?EmailId=";
     @Override
@@ -101,7 +105,7 @@ public class homepage extends AppCompatActivity {
                                 }else
                                 {
                                     prev_updation(array.length());
-                                    builder.setMessage("Your status of one of the application has been changed")
+                                   builder.setMessage("Your status of one of the application has been changed")
                                             .setCancelable(false)
                                             .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                 public void onClick(DialogInterface dialog, int id) {
