@@ -1,8 +1,12 @@
 package com.example.myapp;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.view.View;
@@ -13,6 +17,8 @@ import java.util.*;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -34,6 +40,9 @@ public class homepage extends AppCompatActivity {
     static String accessTkn;
     private RequestQueue queue1;
     private RequestQueue queue;
+    private final String CHANNEL_ID="STATUS UPDATE";
+
+    private final int notificationId = 01;
     JsonObjectRequest objectRequest;
     static final String Key_Appid = "Application_id";
     private String app_id;
@@ -101,17 +110,26 @@ public class homepage extends AppCompatActivity {
                                 }else
                                 {
                                     prev_updation(array.length());
-                                    builder.setMessage("Your status of one of the application has been changed")
-                                            .setCancelable(false)
-                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                                public void onClick(DialogInterface dialog, int id) {
-                                                    dialog.cancel();
-                                                }
-                                            });
-                                    AlertDialog alert = builder.create();
-                                    alert.setTitle("Updates");
-                                    alert.show();
-                                break;
+                                    createNotificationChannel();
+                                   //Intent intent = new Intent(homepage.this, status.class);
+                                    //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                   //PendingIntent pendingIntent = PendingIntent.getActivity(homepage.this, 0, intent, 0);
+
+                                    NotificationCompat.Builder builder = new NotificationCompat.Builder(homepage.this, CHANNEL_ID)
+                                            .setSmallIcon(R.drawable.ic_msg)
+                                            .setContentTitle("Status Update")
+                                            .setContentText("The Status of your Application has been updated.")
+                                            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                                            // Set the intent that will fire when the user taps the notification
+                                           //.setContentIntent(pendingIntent)
+                                            .setAutoCancel(true);
+
+                                    NotificationManagerCompat notificationManager = NotificationManagerCompat.from(homepage.this);
+
+// notificationId is a unique int for each notification that you must define
+                                    notificationManager.notify(notificationId, builder.build());
+
+
                                 }
                             }
 
@@ -166,4 +184,26 @@ public class homepage extends AppCompatActivity {
             queue.add(objectRequest);
         }
     }
+
+    private void createNotificationChannel() {
+        // Create the NotificationChannel, but only on API 26+ because
+        // the NotificationChannel class is new and not in the support library
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = "STATUS UPDATE";
+            String description = "Display change in Application Status";
+            int importance = NotificationManager.IMPORTANCE_DEFAULT;
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, importance);
+            channel.setDescription(description);
+            // Register the channel with the system; you can't change the importance
+            // or other notification behaviors after this
+            NotificationManager notificationManager = getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
+        }
+    }
+
+
+
+
+
+
 }
