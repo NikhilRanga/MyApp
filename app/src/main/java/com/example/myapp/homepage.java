@@ -41,17 +41,16 @@ public class homepage extends AppCompatActivity {
     private RequestQueue queue1;
     private RequestQueue queue;
     private final String CHANNEL_ID="STATUS UPDATE";
-
     private final int notificationId = 01;
     JsonObjectRequest objectRequest;
     static final String Key_Appid = "Application_id";
     private String app_id;
     JSONObject data;
+    AlertDialog.Builder builder;
     static String eid;
     String a[]=new String[3];
     String b[]=new String[3];
     String c[]=new String[3];
-    AlertDialog.Builder builder;
     private static final String URL="https://admintesting.herokuapp.com/seestatus?EmailId=";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,12 +109,24 @@ public class homepage extends AppCompatActivity {
                                 }else
                                 {
                                     prev_updation(array.length());
-                                    createNotificationChannel();
+                                    builder.setMessage("The Status of your Application has been updated.")
+                                            .setCancelable(false)
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    Intent i1 = new Intent(getApplicationContext(), homepage.class);
+                                                    startActivity(i1);
+                                                }
+                                            });
+                                    AlertDialog alert = builder.create();
+                                    alert.setTitle("Status Update");
+                                    alert.show();
+
+                                    // createNotificationChannel();
                                    //Intent intent = new Intent(homepage.this, status.class);
                                     //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                    //PendingIntent pendingIntent = PendingIntent.getActivity(homepage.this, 0, intent, 0);
 
-                                    NotificationCompat.Builder builder = new NotificationCompat.Builder(homepage.this, CHANNEL_ID)
+                                  /*  NotificationCompat.Builder builder = new NotificationCompat.Builder(homepage.this, CHANNEL_ID)
                                             .setSmallIcon(R.drawable.ic_msg)
                                             .setContentTitle("Status Update")
                                             .setContentText("The Status of your Application has been updated.")
@@ -127,13 +138,12 @@ public class homepage extends AppCompatActivity {
                                     NotificationManagerCompat notificationManager = NotificationManagerCompat.from(homepage.this);
 
 // notificationId is a unique int for each notification that you must define
-                                    notificationManager.notify(notificationId, builder.build());
+                                    notificationManager.notify(notificationId, builder.build());*/
 
-
+                                break;
                                 }
                             }
-
-                        } catch (Exception e) {
+                    } catch (Exception e) {
                             e.printStackTrace();
                         }
 
@@ -185,7 +195,7 @@ public class homepage extends AppCompatActivity {
         }
     }
 
-    private void createNotificationChannel() {
+  /*  private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -199,11 +209,7 @@ public class homepage extends AppCompatActivity {
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
             notificationManager.createNotificationChannel(channel);
         }
-    }
-
-
-
-
+    }*/
 
 
 }
